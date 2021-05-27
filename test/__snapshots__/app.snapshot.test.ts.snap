@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`integ snapshot validation 1`] = `
+exports[`snapshot stack 1`] = `
 Object {
   "Resources": Object {
     "mypipelinePipeline9E5E75F8": Object {
@@ -171,7 +171,7 @@ Object {
     "mypipelinePipelineArtifactsBucketEncryptionKeyAliasC54EDA84": Object {
       "DeletionPolicy": "Delete",
       "Properties": Object {
-        "AliasName": "alias/codepipeline-mydemostackmypipelinepipeline481c8464",
+        "AliasName": "alias/codepipeline-teststackmypipelinepipeline782b9cc4",
         "TargetKeyId": Object {
           "Fn::GetAtt": Array [
             "mypipelinePipelineArtifactsBucketEncryptionKeyB9F0FA65",
@@ -1029,7 +1029,7 @@ Object {
     },
     \\"build\\": {
       \\"commands\\": [
-        \\"cdk -a . deploy my-demo-stack --require-approval=never --verbose\\"
+        \\"cdk -a . deploy test-stack --require-approval=never --verbose\\"
       ]
     }
   }
@@ -1245,7 +1245,7 @@ Object {
       },
       "Type": "AWS::CodeCommit::Repository",
     },
-    "repomydemostackmypipelinePipeline481C8464EventRuleB43E5310": Object {
+    "repoteststackmypipelinePipeline782B9CC4EventRule32282F75": Object {
       "Properties": Object {
         "EventPattern": Object {
           "detail": Object {
