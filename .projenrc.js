@@ -40,7 +40,7 @@ project.setScript('deploy', 'cdk deploy');
 project.setScript('destroy', 'cdk destroy');
 
 // ignore packages or files
-const commonExclude = ['cdk.out'];
+const commonExclude = ['cdk.out', 'cdk.context.json', 'yarn-error.log'];
 project.npmignore.exclude(...commonExclude);
 project.gitignore.exclude(...commonExclude);
 
