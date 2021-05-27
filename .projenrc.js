@@ -4,7 +4,7 @@ const project = new AwsCdkConstructLibrary({
   author: 'geyson',
   authorAddress: 'geysonb04@gmail.com',
   cdkVersion: '1.100.0',
-  defaultReleaseBranch: 'main',
+  defaultReleaseBranch: 'master',
   name: 'aws-cdk-packages',
   repositoryUrl: 'https://github.com/jasonFerre/aws-cdk-packages.git',
   cdkDependencies: [
