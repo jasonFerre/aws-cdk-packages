@@ -1,5 +1,6 @@
-import { LambdaPowerToolsFunction } from './lambda-power-tools';
+import { LambdaFunction } from './test-function';
+
 
 module.exports = {
-  LambdaPowerToolsFunction,
+  LambdaFunction,
 };
