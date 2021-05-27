@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`integ snapshot validation 1`] = `
+Object {
+  "Parameters": Object {
+    "AssetParameters2ffd1ee8d05ac75891ca04224afe4eeb70e8f542883356b88fe84a41f2e14307ArtifactHashB48C5CFC": Object {
+      "Description": "Artifact hash for asset \\"2ffd1ee8d05ac75891ca04224afe4eeb70e8f542883356b88fe84a41f2e14307\\"",
+      "Type": "String",
+    },
+    "AssetParameters2ffd1ee8d05ac75891ca04224afe4eeb70e8f542883356b88fe84a41f2e14307S3Bucket66A6CFA6": Object {
+      "Description": "S3 bucket for asset \\"2ffd1ee8d05ac75891ca04224afe4eeb70e8f542883356b88fe84a41f2e14307\\"",
+      "Type": "String",
+    },
+    "AssetParameters2ffd1ee8d05ac75891ca04224afe4eeb70e8f542883356b88fe84a41f2e14307S3VersionKey8C33E6EC": Object {
+      "Description": "S3 key for asset version \\"2ffd1ee8d05ac75891ca04224afe4eeb70e8f542883356b88fe84a41f2e14307\\"",
+      "Type": "String",
+    },
+  },
+  "Resources": Object {
+    "myfunctiontestCurrentVersionE16E8D2618c6fa5ed13f740a4873dbccfc485e0c": Object {
+      "Properties": Object {
+        "FunctionName": Object {
+          "Ref": "myfunctiontestFA0FA7F2",
+        },
+      },
+      "Type": "AWS::Lambda::Version",
+    },
+    "myfunctiontestFA0FA7F2": Object {
+      "DependsOn": Array [
+        "myfunctiontestServiceRoleDefaultPolicyFACEC2D3",
+        "myfunctiontestServiceRole6BCA6FC7",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParameters2ffd1ee8d05ac75891ca04224afe4eeb70e8f542883356b88fe84a41f2e14307S3Bucket66A6CFA6",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters2ffd1ee8d05ac75891ca04224afe4eeb70e8f542883356b88fe84a41f2e14307S3VersionKey8C33E6EC",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters2ffd1ee8d05ac75891ca04224afe4eeb70e8f542883356b88fe84a41f2e14307S3VersionKey8C33E6EC",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "Environment": Object {
+          "Variables": Object {
+            "LOG_LEVEL": "INFO",
+            "POWERTOOLS_SERVICE_NAME": "druid-construct-function",
+          },
+        },
+        "Handler": "index.handler",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "myfunctiontestServiceRole6BCA6FC7",
+            "Arn",
+          ],
+        },
+        "Runtime": "python3.8",
+        "Timeout": 5,
+        "TracingConfig": Object {
+          "Mode": "Active",
+        },
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "myfunctiontestServiceRole6BCA6FC7": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "myfunctiontestServiceRoleDefaultPolicyFACEC2D3": Object {
+      "Properties": Object {
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": Array [
+                "xray:PutTraceSegments",
+                "xray:PutTelemetryRecords",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "myfunctiontestServiceRoleDefaultPolicyFACEC2D3",
+        "Roles": Array [
+          Object {
+            "Ref": "myfunctiontestServiceRole6BCA6FC7",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
+    "myfunctiontestalias6CC303DE": Object {
+      "Properties": Object {
+        "FunctionName": Object {
+          "Ref": "myfunctiontestFA0FA7F2",
+        },
+        "FunctionVersion": Object {
+          "Fn::GetAtt": Array [
+            "myfunctiontestCurrentVersionE16E8D2618c6fa5ed13f740a4873dbccfc485e0c",
+            "Version",
+          ],
+        },
+        "Name": "Current",
+      },
+      "Type": "AWS::Lambda::Alias",
+    },
+  },
+}
+`;
