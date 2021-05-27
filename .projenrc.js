@@ -26,14 +26,6 @@ const project = new AwsCdkConstructLibrary({
   ],
 });
 
-
-//insert packages to project
-// project.deps.addDependency('deep-diff@^1.0.2', DependencyType.BUNDLED);
-// project.deps.addDependency('deepmerge', DependencyType.BUNDLED);
-// project.deps.addDependency('@types/deep-diff', DependencyType.BUNDLED);
-// project.deps.addDependency('@types/npmlog', DependencyType.BUNDLED);
-// project.deps.addDependency('npmlog', DependencyType.BUNDLED);
-
 project.deps.removeDependency('@types/jest', DependencyType.DEVENV);
 project.deps.addDependency('@types/jest@^26.0.19', DependencyType.DEVENV);
 
