@@ -1,7 +1,7 @@
 import * as code_commit from '@aws-cdk/aws-codecommit';
 import * as code_pipeline from '@aws-cdk/aws-codepipeline';
 import * as pipeline_actions from '@aws-cdk/aws-codepipeline-actions';
-import { Construct, PhysicalName } from '@aws-cdk/core';
+import { Construct, PhysicalName, Stage } from '@aws-cdk/core';
 import { CdkPipeline, SimpleSynthAction } from '@aws-cdk/pipelines';
 
 
@@ -9,6 +9,7 @@ export interface PipelineProps {
   readonly repository?: code_commit.Repository;
   readonly buildCommand?: string;
   readonly repositoryName?: string;
+  readonly devStageApp: Stage;
 }
 
 export class Pipeline extends Construct {
@@ -48,5 +49,7 @@ export class Pipeline extends Construct {
         },
       }),
     });
+
+    this.pipeline.addApplicationStage(props.devStageApp);
   }
 }

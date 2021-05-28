@@ -20,9 +20,12 @@ export class AppStack extends cdk.Stack {
       repositoryName: 'druid-test'
     });
 
+    const devStageApp = new cdk.Stage(this, 'my-test-stage');
+
     new Pipeline(this, 'my-pipeline', {
       repository: repository,
-      buildComand: 'npm run build'
+      buildComand: 'npm run build',
+      devStageApp: devStageApp
     } as PipelineProps)
   }
 }
